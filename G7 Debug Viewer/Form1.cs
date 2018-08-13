@@ -48,5 +48,8 @@ namespace G7_Debug_Viewer
             Indicator.Stop();
             Indicator.Start();
         }
+
+
+        
     }
 }
