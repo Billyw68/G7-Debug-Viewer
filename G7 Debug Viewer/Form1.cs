@@ -16,5 +16,21 @@ namespace G7_Debug_Viewer
         {
             InitializeComponent();
         }
+
+        private void FileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Really Quit?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+
+                Application.Exit();
+
+            }
+        }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 a = new AboutBox1();
+            a.ShowDialog();
+        }
     }
 }
