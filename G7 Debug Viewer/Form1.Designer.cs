@@ -45,6 +45,8 @@
             this.Indicator = new System.ServiceProcess.ServiceController();
             this.GSM = new System.ServiceProcess.ServiceController();
             this.ImpExp = new System.ServiceProcess.ServiceController();
+            this.SMTP = new System.ServiceProcess.ServiceController();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.Other = new System.ServiceProcess.ServiceController();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -58,6 +60,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -185,8 +188,17 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(768, 400);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Other";
+            this.tabPage4.Text = "SMTP";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(768, 400);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Other";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -195,7 +207,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Genesys 7 Service Debug";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -226,6 +238,8 @@
         private System.ServiceProcess.ServiceController Indicator;
         private System.ServiceProcess.ServiceController GSM;
         private System.ServiceProcess.ServiceController ImpExp;
+        private System.ServiceProcess.ServiceController SMTP;
+        private System.Windows.Forms.TabPage tabPage5;
         private System.ServiceProcess.ServiceController Other;
     }
 }
