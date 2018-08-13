@@ -32,5 +32,21 @@ namespace G7_Debug_Viewer
             AboutBox1 a = new AboutBox1();
             a.ShowDialog();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Indicator.Start();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Indicator.Stop();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Indicator.Stop();
+            Indicator.Start();
+        }
     }
 }
