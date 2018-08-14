@@ -33,9 +33,10 @@ namespace G7_Debug_Viewer
         {
            
             
-            if (ServiceExists("mysql"))
+            if (ServiceExists("Preciamolen_Indicator_Agent"))
             {
                 Indicator.Start();
+                IndicatorStatusBox.Text = "Service Started";
             }
             else
             {

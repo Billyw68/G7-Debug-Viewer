@@ -541,6 +541,10 @@
             this.button5.Text = "Connect";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // Indicator
+            // 
+            this.Indicator.ServiceName = "Preciamolen_Indicator_Agent";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
