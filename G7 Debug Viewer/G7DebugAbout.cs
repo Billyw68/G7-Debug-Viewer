@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace G7_Debug_Viewer
 {
-    partial class AboutBox1 : Form
+    partial class G7DebugAbout : Form
     {
-        public AboutBox1()
+        public G7DebugAbout()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);

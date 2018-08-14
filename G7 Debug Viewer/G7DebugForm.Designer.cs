@@ -2,7 +2,7 @@
 
 namespace G7_Debug_Viewer
 {
-    partial class Form1
+    partial class G7DebugForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace G7_Debug_Viewer
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(G7DebugForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();

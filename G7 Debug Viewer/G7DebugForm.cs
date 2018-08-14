@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace G7_Debug_Viewer
 {
-    public partial class Form1 : Form
+    public partial class G7DebugForm : Form
     {
 
-        public Form1()
+        public G7DebugForm()
         {
             InitializeComponent();
         }
@@ -149,7 +149,7 @@ namespace G7_Debug_Viewer
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox1 a = new AboutBox1();
+            G7DebugAbout a = new G7DebugAbout();
             a.ShowDialog();
         }
 
