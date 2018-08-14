@@ -68,25 +68,25 @@ namespace G7_Debug_Viewer
             ServiceController sc = new ServiceController();
             sc.ServiceName = ServiceName;
 
-            Console.WriteLine("The {0} service status is currently set to {1}", ServiceName, sc.Status.ToString());
+            IndicatorStatusBox.Text=("The {0} service status is currently set to {1}" + ServiceName + sc.Status.ToString());
 
             if (sc.Status == ServiceControllerStatus.Running)
             {
                 // Start the service if the current status is stopped.
-                Console.WriteLine("Stopping the {0} service ...", ServiceName);
+                IndicatorStatusBox.Text = ("Stopping the {0} service ..." + ServiceName);
                 try
                 {
-                    // Start the service, and wait until its status is "Running".
+                    // Stop the service, and wait until its status is "Stopped".
                     sc.Stop();
                     sc.WaitForStatus(ServiceControllerStatus.Stopped);
 
                     // Display the current service status.
-                    Console.WriteLine("The {0} service status is now set to {1}.", ServiceName, sc.Status.ToString());
+                    IndicatorStatusBox.Text = ("The {0} service status is now set to {1}." + ServiceName + sc.Status.ToString());
                 }
                 catch (InvalidOperationException e)
                 {
-                    Console.WriteLine("Could not stop the {0} service.", ServiceName);
-                    Console.WriteLine(e.Message);
+                    IndicatorStatusBox.Text = ("Could not stop the {0} service." + ServiceName);
+                    IndicatorStatusBox.Text = (e.Message);
                 }
             }
             else
