@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("G7 Debug Viewer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Engineer utility designed to allow control of Genesys 7 supporting services and viewing debug and log info")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Precia Molen UK Ltd")]
 [assembly: AssemblyProduct("G7 Debug Viewer")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
