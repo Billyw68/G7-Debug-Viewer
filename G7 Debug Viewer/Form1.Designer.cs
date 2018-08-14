@@ -1,4 +1,6 @@
-﻿namespace G7_Debug_Viewer
+﻿using System;
+
+namespace G7_Debug_Viewer
 {
     partial class Form1
     {
@@ -157,9 +159,10 @@
             // IndicatorStatusBox
             // 
             this.IndicatorStatusBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.IndicatorStatusBox.Location = new System.Drawing.Point(28, 352);
+            this.IndicatorStatusBox.Location = new System.Drawing.Point(28, 285);
+            this.IndicatorStatusBox.Multiline = true;
             this.IndicatorStatusBox.Name = "IndicatorStatusBox";
-            this.IndicatorStatusBox.Size = new System.Drawing.Size(207, 13);
+            this.IndicatorStatusBox.Size = new System.Drawing.Size(207, 87);
             this.IndicatorStatusBox.TabIndex = 4;
             this.IndicatorStatusBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -169,7 +172,7 @@
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(695, 286);
+            this.textBox7.Size = new System.Drawing.Size(695, 232);
             this.textBox7.TabIndex = 3;
             // 
             // textBox2
@@ -607,6 +610,8 @@
             this.PerformLayout();
 
         }
+
+        
 
         #endregion
 
