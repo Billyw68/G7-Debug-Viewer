@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.ServiceProcess;
+using System.Linq;
 
 namespace G7_Debug_Viewer
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +31,23 @@ namespace G7_Debug_Viewer
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            Indicator.Start();
+           
+            
+            if (ServiceExists("mysql"))
+            {
+                Indicator.Start();
+            }
+            else
+            {
+                IndicatorStatusBox.ForeColor = System.Drawing.Color.Red;
+                IndicatorStatusBox.Text = "Service Not Installed";
+            }
+            
+        }
+
+        private bool ServiceExists(string ServiceName)
+        {
+            return ServiceController.GetServices().Any(serviceController => serviceController.ServiceName.Equals(ServiceName));
         }
 
         private void Button7_Click(object sender, EventArgs e)

@@ -34,7 +34,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.IndicatorStatusBox = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -111,7 +111,7 @@
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Controls.Add(this.button6);
-            this.tabPage1.Controls.Add(this.textBox16);
+            this.tabPage1.Controls.Add(this.IndicatorStatusBox);
             this.tabPage1.Controls.Add(this.textBox7);
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.textBox1);
@@ -126,7 +126,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(428, 352);
+            this.button8.Location = new System.Drawing.Point(405, 352);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 7;
@@ -136,7 +136,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(303, 352);
+            this.button7.Location = new System.Drawing.Point(322, 352);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 6;
@@ -146,7 +146,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(156, 352);
+            this.button6.Location = new System.Drawing.Point(241, 352);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 5;
@@ -154,13 +154,14 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
-            // textBox16
+            // IndicatorStatusBox
             // 
-            this.textBox16.Location = new System.Drawing.Point(28, 352);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(100, 20);
-            this.textBox16.TabIndex = 4;
-            this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.IndicatorStatusBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.IndicatorStatusBox.Location = new System.Drawing.Point(28, 352);
+            this.IndicatorStatusBox.Name = "IndicatorStatusBox";
+            this.IndicatorStatusBox.Size = new System.Drawing.Size(207, 13);
+            this.IndicatorStatusBox.TabIndex = 4;
+            this.IndicatorStatusBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox7
             // 
@@ -643,7 +644,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox IndicatorStatusBox;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;

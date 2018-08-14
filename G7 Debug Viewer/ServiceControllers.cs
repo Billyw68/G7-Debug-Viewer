@@ -12,7 +12,7 @@ namespace G7_Debug_Viewer
         /// </summary>
         /// <param name="ServiceName">Service name</param>
         /// <returns></returns>
-        public bool serviceExists(string ServiceName)
+        public bool ServiceExists(string ServiceName)
         {
             return ServiceController.GetServices().Any(serviceController => serviceController.ServiceName.Equals(ServiceName));
         }
@@ -21,7 +21,7 @@ namespace G7_Debug_Viewer
         ///  Verify if a service is running.
         /// </summary>
         /// <param name="ServiceName"></param>
-        public bool serviceIsRunning(string ServiceName)
+        public bool ServiceIsRunning(string ServiceName)
         {
             ServiceController sc = new ServiceController();
             sc.ServiceName = ServiceName;
@@ -40,7 +40,7 @@ namespace G7_Debug_Viewer
         /// Start a service by it's name
         /// </summary>
         /// <param name="ServiceName"></param>
-        public void startService(string ServiceName)
+        public void StartService(string ServiceName)
         {
             ServiceController sc = new ServiceController();
             sc.ServiceName = ServiceName;
@@ -76,7 +76,7 @@ namespace G7_Debug_Viewer
         /// Stop a service that is active
         /// </summary>
         /// <param name="ServiceName"></param>
-        public void stopService(string ServiceName)
+        public void StopService(string ServiceName)
         {
             ServiceController sc = new ServiceController();
             sc.ServiceName = ServiceName;
@@ -112,17 +112,17 @@ namespace G7_Debug_Viewer
         /// Reboots a service
         /// </summary>
         /// <param name="ServiceName"></param>
-        public void rebootService(string ServiceName)
+        public void RebootService(string ServiceName)
         {
-            if (serviceExists(ServiceName))
+            if (ServiceExists(ServiceName))
             {
-                if (serviceIsRunning(ServiceName))
+                if (ServiceIsRunning(ServiceName))
                 {
-                    stopService(ServiceName);
+                    StopService(ServiceName);
                 }
                 else
                 {
-                    startService(ServiceName);
+                    StartService(ServiceName);
                 }
             }
             else
