@@ -581,7 +581,7 @@ namespace G7_Debug_Viewer
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
-            // Form1
+            // G7DebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -591,7 +591,7 @@ namespace G7_Debug_Viewer
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "G7DebugForm";
             this.Text = "Genesys 7 Service Debug";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

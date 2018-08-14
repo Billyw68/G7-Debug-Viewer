@@ -2,15 +2,19 @@
 using System.Windows.Forms;
 using System.ServiceProcess;
 using System.Linq;
+using System.Xml;
 
 namespace G7_Debug_Viewer
 {
     public partial class G7DebugForm : Form
     {
+        string parameter;
 
         public G7DebugForm()
         {
             InitializeComponent();
+            ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config");
+            textBox7.Text = parameter;
         }
 
         /// <summary>
@@ -136,6 +140,41 @@ namespace G7_Debug_Viewer
                 Console.WriteLine("The given service {0} doesn't exists", ServiceName);
             }
         }
+
+        /// <summary>
+        ///  Read XML Config file for service and search for parameter.
+        /// </summary>
+        /// <param name="FilePath String Parameter String"></param>
+
+        public string ReadXML(string FilePath)
+        {
+           
+
+            if (string.IsNullOrWhiteSpace(FilePath))
+            {
+                throw new ArgumentException("Filpath is blank", nameof(FilePath));
+            }
+            else
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(FilePath);
+                parameter = doc.InnerXml;
+            }
+
+            
+            if (string.IsNullOrWhiteSpace(parameter))
+            {
+                throw new ArgumentException("Filpath is blank", nameof(FilePath));
+            }
+            else
+            {
+            return parameter;
+            }
+        }
+
+ 
+
+
 
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
         {
