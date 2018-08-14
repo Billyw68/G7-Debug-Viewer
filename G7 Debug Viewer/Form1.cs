@@ -33,17 +33,17 @@ namespace G7_Debug_Viewer
             a.ShowDialog();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6_Click(object sender, EventArgs e)
         {
             Indicator.Start();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
             Indicator.Stop();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void Button8_Click(object sender, EventArgs e)
         {
             Indicator.Stop();
             Indicator.Start();

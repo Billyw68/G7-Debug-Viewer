@@ -132,7 +132,7 @@
             this.button8.TabIndex = 7;
             this.button8.Text = "Restart";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // button7
             // 
@@ -142,7 +142,7 @@
             this.button7.TabIndex = 6;
             this.button7.Text = "Stop";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // button6
             // 
@@ -152,7 +152,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Start";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // textBox16
             // 
@@ -161,7 +161,6 @@
             this.textBox16.Size = new System.Drawing.Size(100, 20);
             this.textBox16.TabIndex = 4;
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            
             // 
             // textBox7
             // 
