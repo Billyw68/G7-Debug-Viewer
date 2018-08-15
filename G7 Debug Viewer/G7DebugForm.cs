@@ -2,18 +2,31 @@
 using System.Windows.Forms;
 using System.ServiceProcess;
 using System.Linq;
-using System.Xml;
+using System.Xml.Linq;
 
 namespace G7_Debug_Viewer
 {
     public partial class G7DebugForm : Form
     {
         string parameter;
+        string IndicatorIP;
+        string IndicatorPORT;
+        string IndicatorConnected;
+        string GSMIP;
+        string GSMPORT;
+        string GSMConnected;
+        string IMPEXPIP;
+        string IMPEXPPORT;
+        string IMPEXPConnected;
+        string SMTPIP;
+        string SMTPPORT;
+        string SMTPConnected;
+
 
         public G7DebugForm()
         {
             InitializeComponent();
-            ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config");
+            ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config","Debug");
             textBox7.Text = parameter;
         }
 
@@ -144,9 +157,9 @@ namespace G7_Debug_Viewer
         /// <summary>
         ///  Read XML Config file for service and search for parameter.
         /// </summary>
-        /// <param name="FilePath String Parameter String"></param>
+        /// <param name="FilePath (of XML Config file for service) as String, Element (to find) as string, returns parameter as String (should be value of element searched for)"></param>
 
-        public string ReadXML(string FilePath)
+        public string ReadXML(string FilePath, string Element)
         {
            
 
@@ -156,15 +169,15 @@ namespace G7_Debug_Viewer
             }
             else
             {
-                XmlDocument doc = new XmlDocument();
-                doc.Load(FilePath);
-                parameter = doc.InnerXml;
+                XDocument doc = XDocument.Load(FilePath);
+                var parameter = doc.Element(Element);
+                // parameter = doc.InnerXml;
             }
 
             
             if (string.IsNullOrWhiteSpace(parameter))
             {
-                throw new ArgumentException("Filpath is blank", nameof(FilePath));
+                throw new ArgumentException("XML Element not found", nameof(FilePath));
             }
             else
             {

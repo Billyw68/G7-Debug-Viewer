@@ -100,7 +100,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="ExternalConfigs\Preciamolen.GSM.Service.config" />
+    <None Include="ExternalConfigs\Preciamolen.ImpExp.Service.config" />
+    <None Include="ExternalConfigs\Preciamolen.ImpExpWBL.Service.config" />
     <None Include="ExternalConfigs\Preciamolen.Indicator.Service.config" />
+    <None Include="ExternalConfigs\Preciamolen.MODBUS.Service.config" />
+    <None Include="ExternalConfigs\Preciamolen.SMTP.Service.config" />
+    <None Include="ExternalConfigs\Preciamolen.SQLDB.Service.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
