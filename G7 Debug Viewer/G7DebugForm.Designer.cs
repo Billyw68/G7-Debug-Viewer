@@ -38,8 +38,8 @@ namespace G7_Debug_Viewer
             this.button6 = new System.Windows.Forms.Button();
             this.IndicatorStatusBox = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.IndicatorPorttxt = new System.Windows.Forms.TextBox();
+            this.IndicatorIPtxt = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button9 = new System.Windows.Forms.Button();
@@ -115,8 +115,8 @@ namespace G7_Debug_Viewer
             this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.IndicatorStatusBox);
             this.tabPage1.Controls.Add(this.textBox7);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.IndicatorPorttxt);
+            this.tabPage1.Controls.Add(this.IndicatorIPtxt);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -175,21 +175,21 @@ namespace G7_Debug_Viewer
             this.textBox7.Size = new System.Drawing.Size(695, 232);
             this.textBox7.TabIndex = 3;
             // 
-            // textBox2
+            // IndicatorPorttxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(320, 8);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "Port";
+            this.IndicatorPorttxt.Location = new System.Drawing.Point(320, 8);
+            this.IndicatorPorttxt.Name = "IndicatorPorttxt";
+            this.IndicatorPorttxt.Size = new System.Drawing.Size(100, 20);
+            this.IndicatorPorttxt.TabIndex = 2;
+            this.IndicatorPorttxt.Text = "Port";
             // 
-            // textBox1
+            // IndicatorIPtxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "IP";
+            this.IndicatorIPtxt.Location = new System.Drawing.Point(28, 8);
+            this.IndicatorIPtxt.Name = "IndicatorIPtxt";
+            this.IndicatorIPtxt.Size = new System.Drawing.Size(100, 20);
+            this.IndicatorIPtxt.TabIndex = 1;
+            this.IndicatorIPtxt.Text = "IP";
             // 
             // button1
             // 
@@ -620,8 +620,8 @@ namespace G7_Debug_Viewer
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox IndicatorPorttxt;
+        private System.Windows.Forms.TextBox IndicatorIPtxt;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;

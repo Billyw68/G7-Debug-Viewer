@@ -8,7 +8,7 @@ namespace G7_Debug_Viewer
 {
     public partial class G7DebugForm : Form
     {
-        string parameter;
+        string datafromconfig;
         string IndicatorIP;
         string IndicatorPORT;
         string IndicatorConnected;
@@ -26,8 +26,10 @@ namespace G7_Debug_Viewer
         public G7DebugForm()
         {
             InitializeComponent();
-            ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config","Debug");
-            textBox7.Text = parameter;
+            IndicatorPORT = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config","Preciamolen.Indicator.Service","Debug","Port");
+            IndicatorPorttxt.Text = IndicatorPORT;
+            IndicatorIP = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config", "Preciamolen.Indicator.Service", "Debug", "Address");
+            IndicatorIPtxt.Text = IndicatorIP;
         }
 
         /// <summary>
@@ -159,9 +161,9 @@ namespace G7_Debug_Viewer
         /// </summary>
         /// <param name="FilePath (of XML Config file for service) as String, Element (to find) as string, returns parameter as String (should be value of element searched for)"></param>
 
-        public string ReadXML(string FilePath, string Element)
+        public string ReadXML(string FilePath, string root, string Element,string info)
         {
-           
+            datafromconfig = null;
 
             if (string.IsNullOrWhiteSpace(FilePath))
             {
@@ -169,19 +171,23 @@ namespace G7_Debug_Viewer
             }
             else
             {
-                XDocument doc = XDocument.Load(FilePath);
-                var parameter = doc.Element(Element);
-                // parameter = doc.InnerXml;
+                // XDocument doc = XDocument.Load(FilePath);
+                // datafromconfig = doc.Descendants(root).Descendants(Element).Descendants(info).ToString();
+
+                XElement configfile = XElement.Load(FilePath);
+                XElement retrieved = configfile.Element(info);
+                datafromconfig = retrieved.Value;
+
             }
 
-            
-            if (string.IsNullOrWhiteSpace(parameter))
+
+            if (string.IsNullOrWhiteSpace(datafromconfig))
             {
-                throw new ArgumentException("XML Element not found", nameof(FilePath));
+                throw new ArgumentException("XML Element not found", nameof(info));
             }
             else
             {
-            return parameter;
+            return datafromconfig;
             }
         }
 
