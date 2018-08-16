@@ -28,7 +28,7 @@ namespace G7_Debug_Viewer
             InitializeComponent();
             IndicatorPORT = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config","Preciamolen.Indicator.Service","Debug","Port");
             IndicatorPorttxt.Text = IndicatorPORT;
-            IndicatorIP = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config", "Preciamolen.Indicator.Service", "Debug", "Address");
+            IndicatorIP = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config", "Preciamolen.Indicator.Service", "Debug","Address");
             IndicatorIPtxt.Text = IndicatorIP;
         }
 
@@ -172,7 +172,14 @@ namespace G7_Debug_Viewer
             else
             {
                 // XDocument doc = XDocument.Load(FilePath);
-                // datafromconfig = doc.Descendants(root).Descendants(Element).Descendants(info).ToString();
+                // datafromconfig = doc.Descendants(root).Descendants(Element).Elements(info)ToString();
+                // string FilterRoot = doc.Descendants(root).ToString();
+                // MessageBox.Show(FilterRoot);
+                // string FilterElement = doc.Descendants(Element).ToString();
+                // MessageBox.Show(FilterElement);
+                // string FilterInfo = doc.Descendants(info).ToString();
+                // MessageBox.Show(FilterInfo);
+
 
                 XElement configfile = XElement.Load(FilePath);
                 XElement retrieved = configfile.Element(info);
