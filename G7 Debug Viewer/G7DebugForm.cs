@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.ServiceProcess;
 using System.Linq;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace G7_Debug_Viewer
 {
@@ -26,10 +27,10 @@ namespace G7_Debug_Viewer
         public G7DebugForm()
         {
             InitializeComponent();
-            IndicatorPORT = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config","Preciamolen.Indicator.Service","Debug","Port");
-            IndicatorPorttxt.Text = IndicatorPORT;
-            IndicatorIP = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config", "Preciamolen.Indicator.Service", "Debug","Address");
-            IndicatorIPtxt.Text = IndicatorIP;
+         //   IndicatorPORT = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config","Preciamolen.Indicator.Service","Debug","Port");
+         //   IndicatorPorttxt.Text = IndicatorPORT;
+         //   IndicatorIP = ReadXML(@"c:\molen G7\services\Preciamolen.Indicator.Service.config", "Preciamolen.Indicator.Service", "Debug","Address");
+         //   IndicatorIPtxt.Text = IndicatorIP;
         }
 
         /// <summary>
@@ -171,7 +172,7 @@ namespace G7_Debug_Viewer
             }
             else
             {
-                // XDocument doc = XDocument.Load(FilePath);
+                 XDocument doc = XDocument.Load(FilePath);
                 // datafromconfig = doc.Descendants(root).Descendants(Element).Elements(info)ToString();
                 // string FilterRoot = doc.Descendants(root).ToString();
                 // MessageBox.Show(FilterRoot);
@@ -179,6 +180,12 @@ namespace G7_Debug_Viewer
                 // MessageBox.Show(FilterElement);
                 // string FilterInfo = doc.Descendants(info).ToString();
                 // MessageBox.Show(FilterInfo);
+
+                IEnumerable<XElement> rows = doc.Descendants().Where(d => d.Name == "Preciamolen.Indicator.Service"
+                               && d.Descendants().Any(e => e.Name == "Debug"
+                               && d.Descendants().Any(f => f.Name == "Port")));
+                                 // && e.Value == "Port"));
+
 
 
                 XElement configfile = XElement.Load(FilePath);
@@ -260,5 +267,10 @@ namespace G7_Debug_Viewer
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Connect to telnet server using details in indicatoriptxt indicatorporttxt
+            //Chuck anythng that's received into the text box and make sure that you can expand the size of the text box
+        }
     }
 }
