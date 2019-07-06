@@ -4,6 +4,8 @@ using System.ServiceProcess;
 using System.Linq;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using PrimS.Telnet;
 
 namespace G7_Debug_Viewer
 {
@@ -49,15 +51,17 @@ namespace G7_Debug_Viewer
         /// <param name="ServiceName"></param>
         public void StartService(string ServiceName)
         {
-            ServiceController sc = new ServiceController();
-            sc.ServiceName = ServiceName;
+            ServiceController sc = new ServiceController
+            {
+                ServiceName = ServiceName
+            };
 
-            IndicatorStatusBox.Text=("The {0} service status is currently set to {1}" + ServiceName.ToString() + sc.Status.ToString());
+            IndicatorStatusBox.Text="The {0} service status is currently set to {1}" + ServiceName.ToString() + sc.Status.ToString();
 
             if (sc.Status == ServiceControllerStatus.Stopped)
             {
                 // Start the service if the current status is stopped.
-                IndicatorStatusBox.Text = ("Starting the {0} service ..." + ServiceName.ToString());
+                IndicatorStatusBox.Text = "Starting the {0} service ..." + ServiceName.ToString();
                 try
                 {
                     // Start the service, and wait until its status is "Running".
@@ -65,17 +69,17 @@ namespace G7_Debug_Viewer
                     sc.WaitForStatus(ServiceControllerStatus.Running);
 
                     // Display the current service status.
-                    IndicatorStatusBox.Text = ("The {0} service status is now set to {1}." + ServiceName.ToString() + sc.Status.ToString());
+                    IndicatorStatusBox.Text = "The {0} service status is now set to {1}." + ServiceName.ToString() + sc.Status.ToString();
                 }
                 catch (InvalidOperationException e)
                 {
-                    IndicatorStatusBox.Text = ("Could not start the {0} service." + ServiceName.ToString());
-                    IndicatorStatusBox.Text = (e.Message);
+                    IndicatorStatusBox.Text = "Could not start the {0} service." + ServiceName.ToString();
+                    IndicatorStatusBox.Text = e.Message;
                 }
             }
             else
             {
-                IndicatorStatusBox.Text = ("Service {0} already running." + ServiceName.ToString());
+                IndicatorStatusBox.Text = "Service {0} already running." + ServiceName.ToString();
             }
         }
 
@@ -88,12 +92,12 @@ namespace G7_Debug_Viewer
             ServiceController sc = new ServiceController();
             sc.ServiceName = ServiceName;
 
-            IndicatorStatusBox.Text=("The {0} service status is currently set to {1}" + ServiceName + sc.Status.ToString());
+            IndicatorStatusBox.Text="The {0} service status is currently set to {1}" + ServiceName + sc.Status.ToString();
 
             if (sc.Status == ServiceControllerStatus.Running)
             {
                 // Start the service if the current status is stopped.
-                IndicatorStatusBox.Text = ("Stopping the {0} service ..." + ServiceName);
+                IndicatorStatusBox.Text = "Stopping the {0} service ..." + ServiceName;
                 try
                 {
                     // Stop the service, and wait until its status is "Stopped".
@@ -101,12 +105,12 @@ namespace G7_Debug_Viewer
                     sc.WaitForStatus(ServiceControllerStatus.Stopped);
 
                     // Display the current service status.
-                    IndicatorStatusBox.Text = ("The {0} service status is now set to {1}." + ServiceName + sc.Status.ToString());
+                    IndicatorStatusBox.Text = "The {0} service status is now set to {1}." + ServiceName + sc.Status.ToString();
                 }
                 catch (InvalidOperationException e)
                 {
-                    IndicatorStatusBox.Text = ("Could not stop the {0} service." + ServiceName);
-                    IndicatorStatusBox.Text = (e.Message);
+                    IndicatorStatusBox.Text = "Could not stop the {0} service." + ServiceName;
+                    IndicatorStatusBox.Text = e.Message;
                 }
             }
             else
@@ -267,10 +271,34 @@ namespace G7_Debug_Viewer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             //Connect to telnet server using details in indicatoriptxt indicatorporttxt
             //Chuck anythng that's received into the text box and make sure that you can expand the size of the text box
+
+
+        }
+
+        public async Task ReadmeExample()
+        {
+
+            Client client = new Client(server.IPAddress.ToString(), server.Port, new System.Threading.CancellationToken());
+
+            {
+                client.IsConnected.Should().Be(true);
+                (await client.TryLoginAsync("username", "password", TimeoutMs)).Should().Be(true);
+                client.WriteLine("show statistic wan2");
+                string s = await client.TerminatedReadAsync(">", TimeSpan.FromMilliseconds(TimeoutMs));
+                s.Should().Contain(">");
+                s.Should().Contain("WAN2");
+                Regex regEx = new Regex("(?!WAN2 total TX: )([0-9.]*)(?! GB ,RX: )([0-9.]*)(?= GB)");
+                regEx.IsMatch(s).Should().Be(true);
+                MatchCollection matches = regEx.Matches(s);
+                decimal tx = decimal.Parse(matches[0].Value);
+                decimal rx = decimal.Parse(matches[1].Value);
+                (tx + rx).Should().BeLessThan(50);
+            }
+            }
         }
     }
-}
+
