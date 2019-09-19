@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using PrimS.Telnet;
+using System.Text.RegularExpressions;
 
 namespace G7_Debug_Viewer
 {
@@ -24,6 +25,7 @@ namespace G7_Debug_Viewer
         string SMTPIP;
         string SMTPPORT;
         string SMTPConnected;
+        int TimeoutMs;
 
 
         public G7DebugForm()
@@ -89,8 +91,10 @@ namespace G7_Debug_Viewer
         /// <param name="ServiceName"></param>
         public void StopService(string ServiceName)
         {
-            ServiceController sc = new ServiceController();
-            sc.ServiceName = ServiceName;
+            ServiceController sc = new ServiceController
+            {
+                ServiceName = ServiceName
+            };
 
             IndicatorStatusBox.Text="The {0} service status is currently set to {1}" + ServiceName + sc.Status.ToString();
 
@@ -125,8 +129,10 @@ namespace G7_Debug_Viewer
         /// <param name="ServiceName"></param>
         public bool ServiceIsRunning(string ServiceName)
         {
-            ServiceController sc = new ServiceController();
-            sc.ServiceName = ServiceName;
+            ServiceController sc = new ServiceController
+            {
+                ServiceName = ServiceName
+            };
 
             if (sc.Status == ServiceControllerStatus.Running)
             {
@@ -282,9 +288,10 @@ namespace G7_Debug_Viewer
         public async Task ReadmeExample()
         {
 
-            Client client = new Client(server.IPAddress.ToString(), server.Port, new System.Threading.CancellationToken());
+            Client client = new Client(IndicatorIP, Convert.ToInt32( IndicatorPORT), new System.Threading.CancellationToken());
 
             {
+                TimeoutMs = 1000;
                 client.IsConnected.Should().Be(true);
                 (await client.TryLoginAsync("username", "password", TimeoutMs)).Should().Be(true);
                 client.WriteLine("show statistic wan2");
@@ -292,9 +299,7 @@ namespace G7_Debug_Viewer
                 s.Should().Contain(">");
                 s.Should().Contain("WAN2");
                 Regex regEx = new Regex("(?!WAN2 total TX: )([0-9.]*)(?! GB ,RX: )([0-9.]*)(?= GB)");
-                regEx.IsMatch(s).Should().Be(true);
-                MatchCollection matches = regEx.Matches(s);
-                decimal tx = decimal.Parse(matches[0].Value);
+                 decimal tx = decimal.Parse(matches[0].Value);
                 decimal rx = decimal.Parse(matches[1].Value);
                 (tx + rx).Should().BeLessThan(50);
             }
